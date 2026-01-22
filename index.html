@@ -332,14 +332,33 @@
     (function tweakChatbase(){
         const applySizing = () => {
             const iframes = document.querySelectorAll('iframe[src*="chatbase"], iframe[title*="chatbase"], iframe[title*="Chatbase"]');
-            iframes.forEach(iframe => {
-                if (window.innerWidth <= 768) {
-                    iframe.style.maxHeight = '50vh';
-                    iframe.style.height = '50vh';
-                    iframe.style.maxWidth = '90vw';
-                    iframe.style.borderRadius = '16px';
+            const chatWindows = document.querySelectorAll('#chatbase-bubble-window, div[class*="chatbase"]:not([class*="button"])');
+            
+            // Apply to all chatbot elements on ALL screen sizes
+            const applyStyles = (el) => {
+                el.style.minHeight = '50vh';
+                el.style.height = '50vh';
+                el.style.maxHeight = '70vh';
+                el.style.borderRadius = '16px';
+                el.style.boxShadow = '0 4px 24px rgba(0, 0, 0, 0.5)';
+                
+                if (window.innerWidth >= 1200) {
+                    el.style.width = '450px';
+                    el.style.maxWidth = '450px';
+                } else if (window.innerWidth <= 480) {
+                    el.style.width = '92vw';
+                    el.style.maxWidth = '92vw';
+                } else if (window.innerWidth <= 768) {
+                    el.style.width = '90vw';
+                    el.style.maxWidth = '90vw';
+                } else {
+                    el.style.width = '400px';
+                    el.style.maxWidth = '400px';
                 }
-            });
+            };
+            
+            iframes.forEach(applyStyles);
+            chatWindows.forEach(applyStyles);
         };
         
         const observer = new MutationObserver((mutations) => {
@@ -354,7 +373,8 @@
         // Apply on resize
         window.addEventListener('resize', applySizing);
         
-        // Fallback
+        // Fallback - apply multiple times to catch late-loading elements
+        setTimeout(applySizing, 1000);
         setTimeout(applySizing, 2000);
         setTimeout(applySizing, 4000);
     })();
