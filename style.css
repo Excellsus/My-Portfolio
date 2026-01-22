@@ -699,7 +699,6 @@ span{
 }
 
 /* Chatbot button positioning and animation */
-iframe[src*="chatbase"],
 .chatbase-bubble-button,
 #chatbase-bubble-button,
 [data-testid="bubble-button"] {
@@ -719,7 +718,6 @@ iframe[src*="chatbase"],
 
 /* Mobile responsive chatbot positioning */
 @media(max-width: 768px){
-    iframe[src*="chatbase"],
     .chatbase-bubble-button,
     #chatbase-bubble-button,
     [data-testid="bubble-button"] {
@@ -729,7 +727,6 @@ iframe[src*="chatbase"],
 }
 
 @media(max-width: 480px){
-    iframe[src*="chatbase"],
     .chatbase-bubble-button,
     #chatbase-bubble-button,
     [data-testid="bubble-button"] {
