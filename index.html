@@ -334,10 +334,12 @@
             const iframes = document.querySelectorAll('iframe[src*="chatbase"], iframe[title*="chatbase"], iframe[title*="Chatbase"]');
             iframes.forEach(iframe => {
                 if (window.innerWidth <= 768) {
-                    iframe.style.maxHeight = '50vh';
-                    iframe.style.height = '50vh';
+                    iframe.style.maxHeight = '60vh';
+                    iframe.style.height = '60vh';
                     iframe.style.maxWidth = '90vw';
+                    iframe.style.bottom = '85px';
                     iframe.style.borderRadius = '16px';
+                    iframe.style.overflow = 'visible';
                 }
             });
         };

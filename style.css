@@ -713,14 +713,15 @@ span{
         position: fixed !important;
         max-width: 90vw !important;
         width: 90vw !important;
-        max-height: 55vh !important;
-        height: 55vh !important;
-        bottom: 80px !important;
+        max-height: 60vh !important;
+        height: 60vh !important;
+        bottom: 90px !important;
         right: 5vw !important;
         left: auto !important;
         top: auto !important;
         border-radius: 16px !important;
         box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4) !important;
+        overflow: visible !important;
     }
 }
 
@@ -731,12 +732,13 @@ span{
     iframe[title*="chatbase"],
     iframe[title*="Chatbase"],
     iframe[id*="chatbase"] {
-        max-height: 50vh !important;
-        height: 50vh !important;
+        max-height: 60vh !important;
+        height: 60vh !important;
         width: 92vw !important;
         max-width: 92vw !important;
         right: 4vw !important;
-        bottom: 75px !important;
+        bottom: 85px !important;
+        overflow: visible !important;
     }
 }
 
