@@ -12,14 +12,17 @@
 
 html{
     font-size: 62.5%;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
 }
 
 body{
     width: 100%;
-    height: 100vh;
+    min-height: 100vh;
     overflow-x: hidden;
     background-color: #23272a;
     color: white;
+    position: relative;
 }
 
 header{
@@ -698,7 +701,27 @@ span{
     color: #999;
 }
 
-/* Chatbot button animation only - let Chatbase handle positioning */
+/* Chatbot responsive fix - ensure it stays within viewport */
+#chatbase-bubble-window,
+#chatbase-bubble-button,
+.chatbase-bubble-button,
+[data-testid="bubble-button"],
+iframe[title*="chatbase"],
+iframe[title*="Chatbase"] {
+    max-width: calc(100vw - 20px) !important;
+    max-height: calc(100vh - 100px) !important;
+}
+
+/* Ensure chatbot button is always visible and within viewport */
+#chatbase-bubble-button,
+.chatbase-bubble-button,
+[data-testid="bubble-button"] {
+    position: fixed !important;
+    bottom: 20px !important;
+    right: 20px !important;
+    z-index: 9999 !important;
+}
+
 .cb-pulse{
     animation: cb-pulse 2s infinite;
 }
