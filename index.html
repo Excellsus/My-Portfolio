@@ -330,20 +330,33 @@
     <!-- Chatbase animation tweaker -->
     <script>
     (function tweakChatbase(){
+        const applySizing = () => {
+            const iframes = document.querySelectorAll('iframe[src*="chatbase"], iframe[title*="chatbase"], iframe[title*="Chatbase"]');
+            iframes.forEach(iframe => {
+                if (window.innerWidth <= 768) {
+                    iframe.style.maxHeight = '50vh';
+                    iframe.style.height = '50vh';
+                    iframe.style.maxWidth = '90vw';
+                    iframe.style.borderRadius = '16px';
+                }
+            });
+        };
+        
         const observer = new MutationObserver((mutations) => {
             const btn = document.querySelector('#chatbase-bubble-button, .chatbase-bubble-button, [data-testid="bubble-button"]');
             if (btn && !btn.classList.contains('cb-pulse')) {
                 btn.classList.add('cb-pulse');
-                observer.disconnect();
             }
+            applySizing();
         });
         observer.observe(document.body, { childList: true, subtree: true });
         
-        // Fallback if MutationObserver doesn't catch it
-        setTimeout(() => {
-            const btn = document.querySelector('#chatbase-bubble-button, .chatbase-bubble-button, [data-testid="bubble-button"]');
-            if (btn) btn.classList.add('cb-pulse');
-        }, 2000);
+        // Apply on resize
+        window.addEventListener('resize', applySizing);
+        
+        // Fallback
+        setTimeout(applySizing, 2000);
+        setTimeout(applySizing, 4000);
     })();
     </script>
 
