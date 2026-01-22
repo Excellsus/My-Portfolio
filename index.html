@@ -327,5 +327,24 @@
     (function(){if(!window.chatbase||window.chatbase("getState")!=="initialized"){window.chatbase=(...arguments)=>{if(!window.chatbase.q){window.chatbase.q=[]}window.chatbase.q.push(arguments)};window.chatbase=new Proxy(window.chatbase,{get(target,prop){if(prop==="q"){return target.q}return(...args)=>target(prop,...args)}})}const onLoad=function(){const script=document.createElement("script");script.src="https://www.chatbase.co/embed.min.js";script.id="RoSh63TiToXPRk-L_12eT";script.domain="www.chatbase.co";document.body.appendChild(script)};if(document.readyState==="complete"){onLoad()}else{window.addEventListener("load",onLoad)}})();
     </script>
 
+    <!-- Chatbase position & animation tweak -->
+    <script>
+    (function tweakChatbase(){
+        const apply = () => {
+            const btn = document.querySelector('#chatbase-bubble-button, .chatbase-bubble-button, [data-testid="bubble-button"]');
+            if (!btn) return false;
+            btn.style.bottom = '72px'; // move up a bit
+            btn.style.right = '28px';
+            btn.classList.add('cb-pulse');
+            return true;
+        };
+        let attempts = 0;
+        const timer = setInterval(() => {
+            attempts += 1;
+            if (apply() || attempts > 30) clearInterval(timer);
+        }, 250);
+    })();
+    </script>
+
 </body>
 </html>

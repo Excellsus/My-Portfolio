@@ -698,6 +698,17 @@ span{
     color: #999;
 }
 
+/* Chatbot button animation */
+.cb-pulse{
+    animation: cb-pulse 2s infinite;
+}
+
+@keyframes cb-pulse{
+    0%{box-shadow: 0 0 0 0 rgba(183, 75, 75, 0.45);}
+    70%{box-shadow: 0 0 0 12px rgba(183, 75, 75, 0);}
+    100%{box-shadow: 0 0 0 0 rgba(183, 75, 75, 0);}
+}
+
 .form-group:first-child{
     display: grid;
     grid-template-columns: 1fr 1fr;
