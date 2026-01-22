@@ -698,7 +698,15 @@ span{
     color: #999;
 }
 
-/* Chatbot button animation */
+/* Chatbot button positioning and animation */
+iframe[src*="chatbase"],
+.chatbase-bubble-button,
+#chatbase-bubble-button,
+[data-testid="bubble-button"] {
+    bottom: 72px !important;
+    right: 28px !important;
+}
+
 .cb-pulse{
     animation: cb-pulse 2s infinite;
 }

@@ -327,22 +327,23 @@
     (function(){if(!window.chatbase||window.chatbase("getState")!=="initialized"){window.chatbase=(...arguments)=>{if(!window.chatbase.q){window.chatbase.q=[]}window.chatbase.q.push(arguments)};window.chatbase=new Proxy(window.chatbase,{get(target,prop){if(prop==="q"){return target.q}return(...args)=>target(prop,...args)}})}const onLoad=function(){const script=document.createElement("script");script.src="https://www.chatbase.co/embed.min.js";script.id="RoSh63TiToXPRk-L_12eT";script.domain="www.chatbase.co";document.body.appendChild(script)};if(document.readyState==="complete"){onLoad()}else{window.addEventListener("load",onLoad)}})();
     </script>
 
-    <!-- Chatbase position & animation tweak -->
+    <!-- Chatbase animation tweaker -->
     <script>
     (function tweakChatbase(){
-        const apply = () => {
+        const observer = new MutationObserver((mutations) => {
             const btn = document.querySelector('#chatbase-bubble-button, .chatbase-bubble-button, [data-testid="bubble-button"]');
-            if (!btn) return false;
-            btn.style.bottom = '72px'; // move up a bit
-            btn.style.right = '28px';
-            btn.classList.add('cb-pulse');
-            return true;
-        };
-        let attempts = 0;
-        const timer = setInterval(() => {
-            attempts += 1;
-            if (apply() || attempts > 30) clearInterval(timer);
-        }, 250);
+            if (btn && !btn.classList.contains('cb-pulse')) {
+                btn.classList.add('cb-pulse');
+                observer.disconnect();
+            }
+        });
+        observer.observe(document.body, { childList: true, subtree: true });
+        
+        // Fallback if MutationObserver doesn't catch it
+        setTimeout(() => {
+            const btn = document.querySelector('#chatbase-bubble-button, .chatbase-bubble-button, [data-testid="bubble-button"]');
+            if (btn) btn.classList.add('cb-pulse');
+        }, 2000);
     })();
     </script>
 
