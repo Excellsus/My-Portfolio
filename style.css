@@ -16,12 +16,27 @@ html{
     scroll-behavior: smooth;
 }
 
+:root{
+    --color-base: #FF7000;
+    --color-surface: #1F2833;
+    --color-surface-card: #2A3544;
+    --color-surface-alt: #0B0C10;
+    --color-text: #E8E8E8;
+    --color-text-muted: #A0A0A0;
+    --color-hover: #FF8B33;
+    --color-accent: #FFBF00;
+    --color-muted: #4A5568;
+    --color-muted-2: #718096;
+    --shadow-card: 0 4px 20px rgba(0, 0, 0, 0.3);
+    --shadow-hover: 0 8px 30px rgba(255, 112, 0, 0.35);
+}
+
 body{
     width: 100%;
     min-height: 100vh;
     overflow-x: hidden;
-    background-color: #23272a;
-    color: white;
+    background-color: var(--color-surface-alt);
+    color: var(--color-text);
     position: relative;
 }
 
@@ -42,7 +57,7 @@ header{
 
 .logo{
     font-size: 3rem;
-    color: #b74b4b;
+    color: var(--color-base);
     font-weight: 800;
     cursor: pointer;
     transition: 0.5s ease;
@@ -54,7 +69,7 @@ header{
 
 nav a{
     font-size: 1.8rem;
-    color: white;
+    color: var(--color-text);
     margin-left: 4rem;
     font-weight: 500;
     transition: 0.3s ease;
@@ -63,8 +78,8 @@ nav a{
 
 nav a:hover,
 nav a.active{
-    color: #b74b4b;
-    border-bottom: 3px solid #b74b4b;
+    color: var(--color-hover);
+    border-bottom: 3px solid var(--color-hover);
 }
 
 @media(max-width:995px){
@@ -74,12 +89,12 @@ nav a.active{
         top: 0;
         right: 0;
         width: 40%;
-        border-left: 3px solid #b74b4b;
-        border-bottom: 3px solid #b74b4b;
+        border-left: 3px solid var(--color-base);
+        border-bottom: 3px solid var(--color-base);
         border-bottom-left-radius: 2rem;
         padding: 1rem solid;
-        background-color: #161616;
-        border-top: 0.1rem solid rgba(0,0,0,0.1);
+        background-color: var(--color-surface);
+        border-top: 0.1rem solid rgba(102, 44, 0, 0.2);
     }
 
     nav.active{
@@ -96,7 +111,7 @@ nav a.active{
     nav a.active{
         padding: 1rem;
         border-radius: 0.5rem;
-        border-bottom: 0.5rem solid #b74b4b;
+        border-bottom: 0.5rem solid var(--color-hover);
     }
 }
 
@@ -110,7 +125,19 @@ section{
     justify-content: center;
     align-items: center;
     gap: 8rem;
-    background-color: #23272a;
+    background: var(--color-surface);
+    position: relative;
+}
+
+.home::after{
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 150px;
+    background: linear-gradient(to bottom, transparent 0%, var(--color-surface-alt) 100%);
+    pointer-events: none;
 }
 
 .home .home-content h1{
@@ -120,7 +147,7 @@ section{
 }
 
 span{
-    color: #b74b4b;
+    color: var(--color-base);
 }
 
 .home-content h3{
@@ -141,7 +168,7 @@ span{
     position: relative;
     width: 32vw;
     border-radius: 50%;
-    box-shadow: 0 0 25px solid #b74b4b;
+    box-shadow: 0 0 25px var(--color-accent);
     cursor: pointer;
     transition: 0.2s linear;
 }
@@ -158,40 +185,40 @@ span{
     width: 4rem;
     height: 4rem;
     background-color: transparent;
-    border: 0.2rem solid #b74b4b;
+    border: 0.2rem solid var(--color-base);
     font-size: 2rem;
     border-radius: 50%;
     margin: 3rem 1.5rem 3rem 0;
     transition: 0.3s ease;
-    color: #b74b4b;
+    color: var(--color-base);
 }
 
 .social-icons a:hover{
-    color: black;
+    color: var(--color-surface);
     transform: scale(1.3) translateY(-5px);
-    background-color: #b74b4b;
-    box-shadow: 0  0 25px #b74b4b;
+    background-color: var(--color-hover);
+    box-shadow: 0  0 25px var(--color-hover);
 }
 
 .btn{
     display: inline-block;
     padding: 1rem 2.8rem;
-    background-color: black;
+    background-color: var(--color-base);
     border-radius: 4rem;
     font-size: 1.6rem;
-    color: #b74b4b;
+    color: var(--color-surface);
     letter-spacing: 0.3rem;
     font-weight: 600;
-    border: 2px solid #b74b4b;
+    border: 2px solid var(--color-base);
     transition: 0.3s ease;
     cursor: pointer;
 }
 
 .btn:hover{
     transform: scale3d(1.03);
-    background-color: #b74b4b;
-    color: black;
-    box-shadow: 0 0 25px #b74b4b;
+    background-color: var(--color-hover);
+    color: var(--color-surface);
+    box-shadow: 0 0 25px var(--color-hover);
 }
 
 .typing-text{
@@ -206,24 +233,24 @@ span{
 
 .typing-text span::before{
     content: "software Developer";
-    color: #b74b4b;
+    color: var(--color-base);
     animation: words 20s infinite;
 }
 
 .typing-text span::after{
     content: "";
-    background-color:#23272a;
+    background-color: var(--color-surface);
     position: absolute;
     width: calc(100% + 8px);
     height: 100%;
-    border-left: 3px solid black;
+    border-left: 3px solid var(--color-text);
     right: -8;
     animation: cursor 0.6s infinite;
 }
 
 @keyframes cursor{
     to{
-        border-left: 3px solid #b74b4b;
+        border-left: 3px solid var(--color-base);
     }
 }
 
@@ -251,7 +278,7 @@ span{
 @media(max-width:995px){
     .home{
         flex-direction: column;
-        margin: 5rem 4rem;
+        padding: 5rem 4rem;
     }
 
     .home .home-content h3{
@@ -277,7 +304,7 @@ span{
 
 /* Services Section */
 .services{
-    background-color: #161616;
+    background-color: var(--color-surface-alt);
 }
 
 .services-container{
@@ -288,22 +315,23 @@ span{
 }
 
 .service-box{
-    background-color: #1a1a1a;
+    background-color: var(--color-surface-card);
     padding: 3rem 2rem;
     border-radius: 2rem;
     text-align: center;
-    border: 0.2rem solid #b74b4b;
+    border: none;
+    box-shadow: var(--shadow-card);
     transition: 0.3s ease;
 }
 
 .service-box:hover{
     transform: translateY(-10px);
-    box-shadow: 0 0 25px #b74b4b;
+    box-shadow: var(--shadow-hover);
 }
 
 .service-box i{
     font-size: 5rem;
-    color: #b74b4b;
+    color: var(--color-base);
     margin-bottom: 2rem;
 }
 
@@ -319,14 +347,14 @@ span{
 
 /* Skills Section */
 .skills{
-    background-color: black;
+    background-color: var(--color-surface-alt);
 }
 
 .skills-description{
     text-align: center;
     font-size: 1.6rem;
     margin-bottom: 4rem;
-    color: #ccc;
+    color: var(--color-text-muted);
     max-width: 600px;
     margin-left: auto;
     margin-right: auto;
@@ -343,20 +371,20 @@ span{
 }
 
 .skill-card{
-    background-color: #1a1a1a;
+    background-color: var(--color-surface-card);
     padding: 3rem 2rem;
     border-radius: 1.5rem;
     text-align: center;
     transition: 0.3s ease;
-    border: 1px solid #333;
+    border: none;
+    box-shadow: var(--shadow-card);
     position: relative;
     overflow: hidden;
 }
 
 .skill-card:hover{
     transform: translateY(-10px);
-    box-shadow: 0 10px 30px rgba(183, 75, 75, 0.3);
-    border-color: #b74b4b;
+    box-shadow: var(--shadow-hover);
 }
 
 .skill-icon{
@@ -440,13 +468,13 @@ span{
 .skill-card h3{
     font-size: 1.8rem;
     margin-bottom: 0;
-    color: white;
+    color: var(--color-text);
     font-weight: 600;
 }
 
 /* Education Section */
 .education{
-    background-color: #161616;
+    background-color: var(--color-surface-alt);
 }
 
 .education-container{
@@ -456,16 +484,23 @@ span{
 .education-item{
     display: flex;
     margin-bottom: 3rem;
-    padding: 2rem;
-    background-color: #1a1a1a;
-    border-radius: 1rem;
-    border-left: 0.4rem solid #b74b4b;
+    padding: 2.5rem;
+    background-color: var(--color-surface-card);
+    border-radius: 1.5rem;
+    border-left: 0.5rem solid var(--color-base);
+    box-shadow: var(--shadow-card);
+    transition: 0.3s ease;
+}
+
+.education-item:hover{
+    box-shadow: var(--shadow-hover);
+    transform: translateX(5px);
 }
 
 .education-year{
     font-size: 1.8rem;
     font-weight: 600;
-    color: #b74b4b;
+    color: var(--color-base);
     min-width: 150px;
     margin-right: 2rem;
 }
@@ -477,7 +512,7 @@ span{
 
 .institution{
     font-size: 1.4rem;
-    color: #b74b4b;
+    color: var(--color-base);
     margin-bottom: 1rem;
 }
 
@@ -488,14 +523,14 @@ span{
 
 /* Projects Section */
 .projects{
-    background-color: black;
+    background-color: var(--color-surface-alt);
 }
 
 .projects-description{
     text-align: center;
     font-size: 1.6rem;
     margin-bottom: 4rem;
-    color: #ccc;
+    color: var(--color-text-muted);
     max-width: 800px;
     margin-left: auto;
     margin-right: auto;
@@ -509,18 +544,18 @@ span{
 }
 
 .project-card{
-    background-color: #1a1a1a;
+    background-color: var(--color-surface-card);
     border-radius: 1.5rem;
     overflow: hidden;
     transition: 0.3s ease;
-    border: 1px solid #333;
+    border: none;
+    box-shadow: var(--shadow-card);
     position: relative;
 }
 
 .project-card:hover{
     transform: translateY(-10px);
-    box-shadow: 0 10px 30px rgba(183, 75, 75, 0.3);
-    border-color: #b74b4b;
+    box-shadow: var(--shadow-hover);
 }
 
 .project-media{
@@ -547,7 +582,7 @@ span{
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.8);
+    background: rgba(11, 12, 16, 0.9);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -567,20 +602,20 @@ span{
 .project-link{
     width: 50px;
     height: 50px;
-    background-color: #b74b4b;
+    background-color: var(--color-base);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: white;
+    color: var(--color-surface);
     font-size: 1.8rem;
     transition: 0.3s ease;
     text-decoration: none;
 }
 
 .project-link:hover{
-    background-color: white;
-    color: #b74b4b;
+    background-color: var(--color-hover);
+    color: var(--color-surface);
     transform: scale(1.1);
 }
 
@@ -590,7 +625,7 @@ span{
 
 .project-category{
     font-size: 1.2rem;
-    color: #b74b4b;
+    color: var(--color-base);
     text-transform: uppercase;
     font-weight: 600;
     margin-bottom: 1rem;
@@ -600,13 +635,13 @@ span{
 .project-content h3{
     font-size: 2rem;
     margin-bottom: 1rem;
-    color: white;
+    color: var(--color-text);
 }
 
 .project-content p{
     font-size: 1.4rem;
     line-height: 1.6;
-    color: #ccc;
+    color: var(--color-text-muted);
     margin-bottom: 2rem;
 }
 
@@ -617,18 +652,18 @@ span{
 }
 
 .project-tech span{
-    background-color: #161616;
-    color: #b74b4b;
+    background-color: var(--color-surface-alt);
+    color: var(--color-base);
     padding: 0.5rem 1rem;
     border-radius: 2rem;
     font-size: 1.2rem;
     font-weight: 500;
-    border: 1px solid #b74b4b;
+    border: 1px solid var(--color-base);
 }
 
 /* Contact Section */
 .contact{
-    background-color: #161616;
+    background-color: var(--color-surface-alt);
 }
 
 .contact-container{
@@ -641,7 +676,7 @@ span{
 .contact-info h3{
     font-size: 2.5rem;
     margin-bottom: 2rem;
-    color: #b74b4b;
+    color: var(--color-base);
 }
 
 .contact-info p{
@@ -663,15 +698,16 @@ span{
 
 .contact-item i{
     font-size: 2rem;
-    color: #b74b4b;
+    color: var(--color-base);
     margin-right: 1.5rem;
     width: 30px;
 }
 
 .contact-form{
-    background-color: #1a1a1a;
+    background-color: var(--color-surface-card);
     padding: 3rem;
     border-radius: 2rem;
+    box-shadow: var(--shadow-card);
 }
 
 .form-group{
@@ -682,23 +718,23 @@ span{
 .form-group textarea{
     width: 100%;
     padding: 1.5rem;
-    background-color: #161616;
-    border: 0.2rem solid #333;
+    background-color: var(--color-surface-alt);
+    border: 0.2rem solid var(--color-muted);
     border-radius: 1rem;
-    color: white;
+    color: var(--color-text);
     font-size: 1.6rem;
     resize: vertical;
 }
 
 .form-group input:focus,
 .form-group textarea:focus{
-    border-color: #b74b4b;
+    border-color: var(--color-base);
     outline: none;
 }
 
 .form-group input::placeholder,
 .form-group textarea::placeholder{
-    color: #999;
+    color: var(--color-muted-2);
 }
 
 /* Chatbot responsive fix - ensure it stays within viewport */
@@ -708,7 +744,7 @@ iframe[title*="Chatbase"] {
     max-width: min(400px, calc(100vw - 32px)) !important;
     max-height: min(500px, calc(100vh - 120px)) !important;
     border-radius: 16px !important;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3) !important;
+    box-shadow: 0 8px 32px rgba(255, 112, 0, 0.25) !important;
 }
 
 /* Ensure chatbot button is always visible and within viewport */
@@ -749,9 +785,9 @@ iframe[title*="Chatbase"] {
 }
 
 @keyframes cb-pulse{
-    0%{box-shadow: 0 0 0 0 rgba(183, 75, 75, 0.45);}
-    70%{box-shadow: 0 0 0 12px rgba(183, 75, 75, 0);}
-    100%{box-shadow: 0 0 0 0 rgba(183, 75, 75, 0);}
+    0%{box-shadow: 0 0 0 0 rgba(255, 112, 0, 0.45);}
+    70%{box-shadow: 0 0 0 12px rgba(255, 112, 0, 0);}
+    100%{box-shadow: 0 0 0 0 rgba(255, 112, 0, 0);}
 }
 
 .form-group:first-child{
